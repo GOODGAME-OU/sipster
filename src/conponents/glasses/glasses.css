@@ -1,0 +1,22 @@
+.glasses-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 130px;
+
+    overflow: hidden;
+}
+
+.glasses-grid {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 12px;
+
+    transform-origin: center top;
+}

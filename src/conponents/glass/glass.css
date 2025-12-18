@@ -1,0 +1,14 @@
+.glass-container {
+    background: url('assets/glass-empty.png') no-repeat;
+    width: 120px;
+    height: 141px;
+    border: none;
+    cursor: pointer;
+}
+
+.glass-fill {
+    background: url('assets/glass-fill.png') no-repeat;
+    width: 101px;
+    height: 93px;
+    margin: 33px auto;
+}
