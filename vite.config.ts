@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import appData from './package.json';
-import manifest from './public/assets/icons/manifest.json';
+import manifest from './public/assets/manifest.json';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import ConditionalCompile from 'vite-plugin-conditional-compiler';
 import { VitePWA } from 'vite-plugin-pwa';

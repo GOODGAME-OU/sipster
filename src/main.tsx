@@ -12,7 +12,6 @@ const { MODE, DEV } = import.meta.env;
 import HomePage from './pages/HomePage.tsx';
 import { Outlet } from 'react-router-dom';
 import { tryToInstallPWA } from './utils/pwa.ts';
-import { i18n, switchLang } from './utils/i18n.ts';
 
 tryToInstallPWA();
 
@@ -39,7 +38,3 @@ createRoot(root).render(
         <RouterProvider router={router} />
     </StrictMode>,
 );
-
-console.log(i18n().header.home);
-switchLang('ru');
-console.log(i18n().header.home);
