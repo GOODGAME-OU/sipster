@@ -16,6 +16,7 @@ export default defineConfig(({ command, mode }) => {
     const isDev = mode === 'development';
 
     return {
+        base: '/sipster/',
         plugins: [
             react(),
             ConditionalCompile(),
