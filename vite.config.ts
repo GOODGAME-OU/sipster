@@ -36,6 +36,45 @@ export default defineConfig(({ command, mode }) => {
             VitePWA({
                 registerType: 'autoUpdate',
                 injectRegister: 'auto',
+                workbox: {
+                    cleanupOutdatedCaches: true,
+                    clientsClaim: true,
+                    skipWaiting: true,
+
+                    runtimeCaching: [
+                        {
+                            // 🔹 Cache API responses
+                            urlPattern: ({ url }) =>
+                                url.origin === 'https://api.sipster.app',
+
+                            handler: 'NetworkFirst',
+                            options: {
+                                cacheName: 'api-cache',
+                                networkTimeoutSeconds: 3,
+                                expiration: {
+                                    maxEntries: 50,
+                                    maxAgeSeconds: 60 * 60, // 1 hour
+                                },
+                                cacheableResponse: {
+                                    statuses: [0, 200],
+                                },
+                            },
+                        },
+
+                        {
+                            // 🔹 Cache images
+                            urlPattern: ({ request }) => request.destination === 'image',
+                            handler: 'CacheFirst',
+                            options: {
+                                cacheName: 'image-cache',
+                                expiration: {
+                                    maxEntries: 60,
+                                    maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
+                                },
+                            },
+                        },
+                    ],
+                },
                 manifest: manifest as Partial<ManifestOptions>
             }));
     }
