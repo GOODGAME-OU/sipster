@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react-swc';
 import appData from './package.json';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import ConditionalCompile from 'vite-plugin-conditional-compiler';
-import { VitePWA } from 'vite-plugin-pwa';
+import { ManifestOptions, VitePWA } from 'vite-plugin-pwa';
+import manifest from './public/assets/manifest.json';
 
 export default defineConfig(({ command, mode }) => {
     console.log(
@@ -35,26 +36,7 @@ export default defineConfig(({ command, mode }) => {
             VitePWA({
                 registerType: 'autoUpdate',
                 injectRegister: 'auto',
-                manifest: {
-                    name: 'Sipster',
-                    short_name: 'Sipster',
-                    start_url: '/sipster/',
-                    display: 'standalone',
-                    background_color: '#f3f7fc',
-                    theme_color: '#4da6ff',
-                    icons: [
-                        {
-                            src: '/assets/icon-192.png',
-                            sizes: '192x192',
-                            type: 'image/png'
-                        },
-                        {
-                            src: '/assets/icon-512.png',
-                            sizes: '512x512',
-                            type: 'image/png'
-                        }
-                    ]
-                }
+                manifest: manifest as Partial<ManifestOptions>
             }));
     }
 
