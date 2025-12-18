@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import Glass from '../glass/glass';
 import './glasses.css';
 import ls from 'localstorage-slim';
