@@ -1,9 +1,10 @@
 import './bg.css';
+import bg from './bg.png';
 
 const BG = () => {
     return (
         <div className="bg-container">
-            <img className="bg" src="assets/bg.png" alt="Background" />
+            <img className="bg" src={bg} alt="Background" />
         </div>
     );
 };

@@ -4,11 +4,17 @@
     height: 141px;
     border: none;
     cursor: pointer;
+    position: relative;
 }
 
-.glass-fill {
-    background: url('assets/glass-fill.png') no-repeat;
-    width: 101px;
-    height: 93px;
-    margin: 33px auto;
+.glass-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.glass-container img.glass-fill {
+    top: 32px;
+    left: 10px;
 }
