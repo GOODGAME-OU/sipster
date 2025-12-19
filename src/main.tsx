@@ -18,8 +18,4 @@ if (!root) {
     throw new Error('Root element not found');
 }
 
-createRoot(root).render(
-    <StrictMode>
-        <HomePage />
-    </StrictMode>,
-);
+createRoot(root).render(<HomePage />);

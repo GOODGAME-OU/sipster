@@ -1,47 +1,9 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import Glass from '../glass/glass';
 import './glasses.css';
-import ls from 'localstorage-slim';
 
-const Glasses = () => {
+const Glasses = ({ glasses, addGlass }: { glasses: boolean[]; addGlass: () => void }) => {
     const gridRef = useRef<HTMLDivElement>(null);
-    const today = new Date();
-    const todayString =
-        String(today.getDate()).padStart(2, '0') +
-        '.' +
-        String(today.getMonth() + 1).padStart(2, '0') +
-        '.' +
-        today.getFullYear();
-    const storageID = `waterState-${todayString}`;
-    let state = ls.get(storageID) as number;
-
-    const [glasses, setGlasses] = useState<boolean[]>([
-        state > 0,
-        state > 1,
-        state > 2,
-        state > 3,
-        state > 4,
-        state > 5,
-        state > 6,
-        state > 7,
-        state > 8,
-        state > 9,
-    ]);
-
-    const addGlass = () => {
-        setGlasses((prev) => {
-            const newGlasses = [...prev];
-            for (let i = 0; i < newGlasses.length; i++) {
-                if (!newGlasses[i]) {
-                    newGlasses[i] = true;
-                    state = i + 1;
-                    break;
-                }
-            }
-            ls.set(storageID, state);
-            return newGlasses;
-        });
-    };
 
     useLayoutEffect(() => {
         const el = gridRef.current!;
